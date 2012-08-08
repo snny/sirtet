@@ -39,7 +39,7 @@ bool HelloWorld::init()
         // add your codes below...
         //////////////////////////////////////////////////////////////////////////
 
-		/*
+		
         // 1. Add a menu item with "X" image, which is clicked to quit the program.
 
         // Create a "close" menu item with close icon, it's an auto release object.
@@ -49,6 +49,9 @@ bool HelloWorld::init()
             this,
             menu_selector(HelloWorld::menuCloseCallback));
         CC_BREAK_IF(! pCloseItem);
+
+		int testw = CCDirector::sharedDirector()->getWinSize().width - 20;
+		testw--;
 
         // Place the menu item bottom-right conner.
         pCloseItem->setPosition(ccp(CCDirector::sharedDirector()->getWinSize().width - 20, 20));
@@ -83,7 +86,7 @@ bool HelloWorld::init()
 
         // Add the sprite to HelloWorld layer as a child layer.
         this->addChild(pSprite, 0);
-		*/
+		
 
 
 
