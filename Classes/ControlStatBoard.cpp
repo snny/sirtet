@@ -20,48 +20,56 @@ bool ControlStatBoard::init()
 		CCMenu* pMenuCtrl = CCMenu::create(pStart, pPause, NULL);
 		CC_BREAK_IF(!pMenuCtrl);
 		pMenuCtrl->alignItemsVertically();
-		this->addChild(pMenuCtrl, 1, 0);
+		this->addChild(pMenuCtrl);
 		pMenuCtrl->setPosition(ccp(MAIN_BOARD_W-32, 130));
 
 		m_pLevelLabel = CCLabelTTF::create();
-		m_pLevelLabel->initWithString("level1", "Lucida console", 16.0);
-		this->addChild(m_pLevelLabel, 1, 1);
+		m_pLevelLabel->initWithString("level1", "Consolas", 14.0);
+		this->addChild(m_pLevelLabel);
 		m_pLevelLabel->setPosition(ccp(MAIN_BOARD_W-32, MAIN_BOARD_H-80));
 
 		m_pScoreLabel = CCLabelTTF::create();
-		m_pScoreLabel->initWithString("10000", "Lucida console", 16.0);
-		this->addChild(m_pScoreLabel, 1, 2);
-		m_pScoreLabel->setPosition(ccp(MAIN_BOARD_W-32, MAIN_BOARD_H-110));
+		m_pScoreLabel->initWithString("10000", "Consolas", 14.0);
+		this->addChild(m_pScoreLabel);
+		m_pScoreLabel->setPosition(ccp(MAIN_BOARD_W-31, MAIN_BOARD_H-110));
 		
-		
-		CCSprite* pDirNormal = CCSprite::create("dirNormal.png");
-		CC_BREAK_IF(!pDirNormal);
-		CCSprite* pDirSelected = CCSprite::create("dirSelected.png");
-		CC_BREAK_IF(!pDirSelected);
 
-		CCMenuItemImage *pUpItem = CCMenuItemImage::create();
-		CC_BREAK_IF(!pUpItem);
-		pUpItem->initWithNormalSprite(pDirNormal, pDirSelected, NULL, this, menu_selector(ControlStatBoard::moveLeft));
-
-
-		CCSprite* pDirNormal1 = CCSprite::create("dirNormal.png");
-		CC_BREAK_IF(!pDirNormal1);
-		CCSprite* pDirSelected1 = CCSprite::create("dirSelected.png");
-		CC_BREAK_IF(!pDirSelected1);
-
-        CCMenuItemImage *pLeftItem = CCMenuItemImage::create();
+		CCMenuItemImage *pLeftItem = CCMenuItemImage::create(
+			"dirNormal.png",
+			"dirSelected.png",
+			this, menu_selector(ControlStatBoard::moveLeft));
 		CC_BREAK_IF(!pLeftItem);
-		pDirNormal1->setRotation(-90.0);
-		pDirSelected1->setRotation(-90.0);
-		pLeftItem->initWithNormalSprite(pDirNormal1, pDirSelected1, NULL, this, menu_selector(ControlStatBoard::moveLeft));
+		CCMenu* pDirLeftMenu = CCMenu::create(pLeftItem, NULL);
+		pDirLeftMenu->setPosition(ccp(MAIN_BOARD_W-50, 60));
+		this->addChild(pDirLeftMenu);
 
+		CCMenuItemImage *pRightItem = CCMenuItemImage::create(
+			"dirNormal.png",
+			"dirSelected.png",
+			this, menu_selector(ControlStatBoard::moveLeft));
+		CC_BREAK_IF(!pRightItem);
+		CCMenu* pDirRightMenu = CCMenu::create(pRightItem, NULL);
+		pDirRightMenu->setPosition(ccp(MAIN_BOARD_W-20, 60));
+		this->addChild(pDirRightMenu);
 
-        CCMenu* pMenuDir = CCMenu::create(pUpItem, pLeftItem, NULL);
-		pMenuDir->alignItemsHorizontallyWithPadding(20);
-        CC_BREAK_IF(! pMenuDir);
-        this->addChild(pMenuDir, 1, 3);
-		pMenuDir->setPosition(ccp(MAIN_BOARD_W-32, 60));
-	
+		CCMenuItemImage *pUpItem = CCMenuItemImage::create(
+			"dirNormal.png",
+			"dirSelected.png",
+			this, menu_selector(ControlStatBoard::moveLeft));
+		CC_BREAK_IF(!pUpItem);
+		CCMenu* pDirUpMenu = CCMenu::create(pUpItem, NULL);
+		pDirUpMenu->setPosition(ccp(MAIN_BOARD_W-35, 75));
+		this->addChild(pDirUpMenu);
+
+		CCMenuItemImage *pDownItem = CCMenuItemImage::create(
+			"dirNormal.png",
+			"dirSelected.png",
+			this, menu_selector(ControlStatBoard::moveLeft));
+		CC_BREAK_IF(!pDownItem);
+		CCMenu* pDirDownMenu = CCMenu::create(pDownItem, NULL);
+		pDirDownMenu->setPosition(ccp(MAIN_BOARD_W-35, 45));
+		this->addChild(pDirDownMenu);
+
 		m_pLevelLabel->setString("level9");
 
 		bRet = true;
