@@ -50,9 +50,6 @@ bool HelloWorld::init()
             menu_selector(HelloWorld::menuCloseCallback));
         CC_BREAK_IF(! pCloseItem);
 
-		int testw = CCDirector::sharedDirector()->getWinSize().width - 20;
-		testw--;
-
         // Place the menu item bottom-right conner.
         pCloseItem->setPosition(ccp(CCDirector::sharedDirector()->getWinSize().width - 20, 20));
 

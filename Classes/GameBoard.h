@@ -7,6 +7,9 @@ class GameBoard : public cocos2d::CCLayer
 {
 public:
 	virtual bool init();
+	virtual void draw();
+
+	void menuCloseCallback(CCObject* pSender);
 
 	LAYER_CREATE_FUNC(GameBoard);
 };
